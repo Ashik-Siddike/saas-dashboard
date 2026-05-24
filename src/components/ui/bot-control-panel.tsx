@@ -196,7 +196,7 @@ export function BotControlPanel({ site }: { site: any }) {
 
             <div className="space-y-2">
               <Label>Target Language</Label>
-              <Select value={config.language} onValueChange={(v) => setConfig({...config, language: v})}>
+              <Select value={config.language || "English"} onValueChange={(v) => setConfig({...config, language: v || "English"})}>
                 <SelectTrigger className="bg-white/5 border-white/10">
                   <SelectValue placeholder="Select language" />
                 </SelectTrigger>
