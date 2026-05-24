@@ -30,8 +30,10 @@ export default async function LiveMonitor() {
   
   if (recentProducts) {
     recentProducts.forEach(p => {
+      const siteObj = p.sites as any;
+      const siteName = Array.isArray(siteObj) ? siteObj[0]?.name : siteObj?.name;
       logs.push({
-        site: p.sites?.name || "Unknown",
+        site: siteName || "Unknown",
         action: p.is_published ? "Published Article" : "Scraped Product",
         item: p.title,
         status: "success",
@@ -42,8 +44,10 @@ export default async function LiveMonitor() {
 
   if (recentKeywords) {
     recentKeywords.forEach(k => {
+      const siteObj = k.sites as any;
+      const siteName = Array.isArray(siteObj) ? siteObj[0]?.name : siteObj?.name;
       logs.push({
-        site: k.sites?.name || "Unknown",
+        site: siteName || "Unknown",
         action: k.status === 'pending' ? "Discovered Keyword" : "Keyword Completed",
         item: k.keyword,
         status: k.status === 'pending' ? "processing" : "success",
