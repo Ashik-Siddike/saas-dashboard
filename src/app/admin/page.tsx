@@ -59,7 +59,7 @@ export default async function AdminDashboard() {
                       {pub.title}
                     </a>
                     <p className="text-xs opacity-50 truncate">
-                      {new Date(pub.created_at).toLocaleDateString()} • {pub.sites?.name || 'Unknown Site'}
+                      {new Date(pub.created_at).toLocaleDateString()} • {(Array.isArray(pub.sites) ? pub.sites[0]?.name : (pub.sites as any)?.name) || 'Unknown Site'}
                     </p>
                   </div>
                 </div>
